@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CatController : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class CatController : MonoBehaviour
 
     private Vector2 catPosition;
     public Vector2 catSpeed = new Vector2(-1, 0);
+
+    // "Distance" parcourue par le chat et calculée aléatoirement
+    float distanceWalk;
+    // Le temps que le chat mettra à atteindre cette distance
+    float catWalking;
 
     void Start()
     {
@@ -32,13 +38,20 @@ public class CatController : MonoBehaviour
                 {
                     Debug.Log("Chat devient intéressé !");
                     currentState = CatState.Interested;
+                    // Calcul la distance pour ce round
+                    distanceWalk = Random.Range(1.0f, 3.0f);
+                    Debug.Log(distanceWalk);
                 }
                 break;
 
             case CatState.Interested:
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKey(KeyCode.A) && (catWalking <= distanceWalk)) // Le chat avance tant que la valeur de distanceWalk n'est pas atteinte
                 {
                     catPosition += catSpeed; // Déplacement
+                    // Se base sur la vitesse de déplacement du chat
+                    catWalking -= catSpeed.x / 2;
+                    Debug.Log(catWalking);
+
                 }
                 else
                 {
