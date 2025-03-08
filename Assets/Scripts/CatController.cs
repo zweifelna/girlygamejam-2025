@@ -40,17 +40,19 @@ public class CatController : MonoBehaviour
                     currentState = CatState.Interested;
                     // Calcul la distance pour ce round
                     distanceWalk = Random.Range(1.0f, 3.0f);
-                    Debug.Log(distanceWalk);
+                    Debug.Log("Distance à parcourir init :" + distanceWalk);
+                    catWalking = 0;
                 }
                 break;
 
             case CatState.Interested:
                 if (Input.GetKey(KeyCode.A) && (catWalking <= distanceWalk)) // Le chat avance tant que la valeur de distanceWalk n'est pas atteinte
                 {
+                    Debug.Log("Hello");
                     catPosition += catSpeed; // Déplacement
                     // Se base sur la vitesse de déplacement du chat
                     catWalking -= catSpeed.x / 2;
-                    Debug.Log(catWalking);
+                    Debug.Log("Le chat a parcouru :" + catWalking);
 
                 }
                 else
@@ -61,10 +63,14 @@ public class CatController : MonoBehaviour
                 break;
 
             case CatState.Bored:
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKeyDown(KeyCode.A)) // Trouver comment obliger la personne à ne pas cliquer sur A sans que cela créer de conflit avec le reste des states
                 {
                     Debug.Log("Chat reprend de l'intérêt !");
                     currentState = CatState.Interested;
+                    // Calcul la distance pour ce round
+                    distanceWalk = Random.Range(1.0f, 3.0f);
+                    Debug.Log("Distance à parcourir :" + distanceWalk);
+                    catWalking = 0;
                 }
                 break;
         }
