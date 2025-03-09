@@ -29,13 +29,11 @@ public class CatController : MonoBehaviour
         Debug.Log(currentState);
         this.catPosition = this.transform.position;
         StartCoroutine(WaitRandomSeconds());
-        Debug.Log("Après Coroutine");
     }
 
     void Update()
     {
         this.transform.position = catPosition; // Met à jour la position du chat
-        Debug.Log("Update??");
         HandleState(); // Gère l'état actuel du chat
     }
 
@@ -44,25 +42,25 @@ public class CatController : MonoBehaviour
         switch (currentState)
         {
             // Pas utile pour la version finale
-            case CatState.Neutral:
-                if (time.currentTime > 0)
-                {
-                    //Debug.Log("Chat devient intéressé !");
-                    //currentState = CatState.Interested;
-                    // Calcul la distance pour ce round
-                    //distanceWalk = Random.Range(1.0f, 3.0f);
-                    //Debug.Log("Distance à parcourir init :" + distanceWalk);
-                    //catWalking = 0;
-                    Debug.Log("Timer tourne");
-                }
-                else
-                {
-                    currentState = CatState.Bored;
-                    time.enabled = true;
-                    time.timeOut = false;
-                    Debug.Log("Timeout");
-                }
-                break;
+            // case CatState.Neutral:
+            //     if (time.currentTime > 0)
+            //     {
+            //         //Debug.Log("Chat devient intéressé !");
+            //         //currentState = CatState.Interested;
+            //         // Calcul la distance pour ce round
+            //         //distanceWalk = Random.Range(1.0f, 3.0f);
+            //         //Debug.Log("Distance à parcourir init :" + distanceWalk);
+            //         //catWalking = 0;
+            //         Debug.Log("Timer tourne");
+            //     }
+            //     else
+            //     {
+            //         currentState = CatState.Bored;
+            //         time.enabled = true;
+            //         time.timeOut = false;
+            //         Debug.Log("Timeout");
+            //     }
+            //     break;
 
             case CatState.Interested:
                 if (human.currentState == HumanController.HumanState.Pstpst && (catWalking <= distanceWalk) && !human.isTrigger) // Le chat avance tant que la valeur de distanceWalk n'est pas atteinte
@@ -72,7 +70,7 @@ public class CatController : MonoBehaviour
                     // Se base sur la vitesse de déplacement du chat
                     //catWalking -= catSpeed.x / 2; // à tester à la fin: * Time.deltaTime
                     //Debug.Log("Le chat a parcouru :" + catWalking);
-                    Debug.Log("Chat intéressé");
+                    //Debug.Log("Chat intéressé");
 
                 }
                 // else
@@ -92,7 +90,7 @@ public class CatController : MonoBehaviour
                     //distanceWalk = Random.Range(1.0f, 3.0f);
                     //Debug.Log("Distance à parcourir :" + distanceWalk);
                     //catWalking = 0;
-                    Debug.Log("Chat ennuyé");
+                    //Debug.Log("Chat ennuyé");
                 }
                 break;
         }
@@ -110,10 +108,12 @@ public class CatController : MonoBehaviour
 
             if(currentState == CatState.Interested)
             {
-                Debug.Log("in interested if");
+                //Debug.Log("in interested if");
                 currentState = CatState.Bored;
-            } else if (currentState == CatState.Bored) {
-                Debug.Log("in bored if");
+            } else if (currentState == CatState.Bored && !human.isTrigger) {
+                if(human.currentState == HumanController.HumanState.Pstpst) currentState = CatState.Interested;
+            } else if (currentState == CatState.Bored && human.isTrigger) {
+                //Debug.Log("in bored if");
                 currentState = CatState.Interested;
             }
             Debug.Log(currentState);

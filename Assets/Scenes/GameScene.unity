@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 2064109603}
   - component: {fileID: 2064109606}
   - component: {fileID: 2064109607}
+  - component: {fileID: 2064109608}
   m_Layer: 0
   m_Name: chat_test
   m_TagString: Untagged
@@ -444,7 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   catPosition: {x: 0, y: 0}
-  catSpeed: {x: -0.01, y: 0}
+  catSpeed: {x: -0.005, y: 0}
   human: {fileID: 1400360557}
   time: {fileID: 1626350540}
 --- !u!212 &2064109604
@@ -586,6 +587,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.08, y: 6.43}
   m_EdgeRadius: 0
+--- !u!114 &2064109608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064109602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca1a9fc3e2c14b1b82bbaac2962507f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cat: {fileID: 2064109603}
+  interestedCat: {fileID: 21300000, guid: 1daaebe002f56456198b381ec88b4773, type: 3}
+  boredCat: {fileID: 21300000, guid: a7ee351c90c05461780fb99a22613cdf, type: 3}
 --- !u!1 &2112603744
 GameObject:
   m_ObjectHideFlags: 0
