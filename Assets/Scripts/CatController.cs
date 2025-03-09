@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class CatController : MonoBehaviour
 {
     public enum CatState { Neutral, Interested, Bored } // États du chat
-    public CatState currentState = CatState.Neutral;    // État actuel
+    public CatState currentState = CatState.Bored;    // État actuel
 
     public Vector2 catPosition;
     public Vector2 catSpeed = new Vector2(-1, 0);
@@ -24,13 +24,18 @@ public class CatController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(currentState);
+        currentState = CatState.Bored;
+        Debug.Log(currentState);
         this.catPosition = this.transform.position;
+        StartCoroutine(WaitRandomSeconds());
+        Debug.Log("Après Coroutine");
     }
 
     void Update()
     {
         this.transform.position = catPosition; // Met à jour la position du chat
-
+        Debug.Log("Update??");
         HandleState(); // Gère l'état actuel du chat
     }
 
@@ -65,15 +70,16 @@ public class CatController : MonoBehaviour
                     //Debug.Log("Hello");
                     catPosition += catSpeed; // Déplacement
                     // Se base sur la vitesse de déplacement du chat
-                    catWalking -= catSpeed.x / 2; // à tester à la fin: * Time.deltaTime
-                    Debug.Log("Le chat a parcouru :" + catWalking);
+                    //catWalking -= catSpeed.x / 2; // à tester à la fin: * Time.deltaTime
+                    //Debug.Log("Le chat a parcouru :" + catWalking);
+                    Debug.Log("Chat intéressé");
 
                 }
-                else
-                {
-                    //Debug.Log("Chat se lasse...");
-                    currentState = CatState.Bored;
-                }
+                // else
+                // {
+                //     //Debug.Log("Chat se lasse...");
+                //     currentState = CatState.Bored;
+                // }
                 break;
 
             case CatState.Bored:
@@ -86,8 +92,34 @@ public class CatController : MonoBehaviour
                     //distanceWalk = Random.Range(1.0f, 3.0f);
                     //Debug.Log("Distance à parcourir :" + distanceWalk);
                     //catWalking = 0;
+                    Debug.Log("Chat ennuyé");
                 }
                 break;
+        }
+    }
+
+
+    IEnumerator WaitRandomSeconds()
+    {
+        while(true){
+            //Print the time of when the function is first called.
+            //Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+            //yield on a new YieldInstruction that waits for 5 seconds.
+            yield return new WaitForSeconds(Random.Range(1.0f, 3.0f));
+
+            if(currentState == CatState.Interested)
+            {
+                Debug.Log("in interested if");
+                currentState = CatState.Bored;
+            } else if (currentState == CatState.Bored) {
+                Debug.Log("in bored if");
+                currentState = CatState.Interested;
+            }
+            Debug.Log(currentState);
+
+            //After we have waited 5 seconds print the time again.
+            //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         }
     }
 }

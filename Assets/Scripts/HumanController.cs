@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class HumanController : MonoBehaviour
 {
@@ -75,4 +76,6 @@ public class HumanController : MonoBehaviour
         // Pour déterminer si on peut attraper ou non le chat
         isTrigger = true;
     }
+
+    
 }
