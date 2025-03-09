@@ -589,9 +589,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2064109605}
   - component: {fileID: 2064109604}
-  - component: {fileID: 2064109603}
   - component: {fileID: 2064109606}
   - component: {fileID: 2064109607}
+  - component: {fileID: 2064109603}
   - component: {fileID: 2064109608}
   m_Layer: 0
   m_Name: chat_test
