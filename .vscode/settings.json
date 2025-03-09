@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TheCatProject.sln"
+    "dotnet.defaultSolution": "girlygamejam-2025.sln"
 }

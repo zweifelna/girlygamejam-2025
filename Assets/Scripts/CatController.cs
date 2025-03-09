@@ -6,14 +6,14 @@ using Random = UnityEngine.Random;
 
 public class CatController : MonoBehaviour
 {
-    private enum CatState { Neutral, Interested, Bored } // États du chat
-    private CatState currentState = CatState.Neutral;    // État actuel
+    public enum CatState { Neutral, Interested, Bored } // États du chat
+    public CatState currentState = CatState.Neutral;    // État actuel
 
     public Vector2 catPosition;
     public Vector2 catSpeed = new Vector2(-1, 0);
 
     public HumanController human;
-    
+
 
     // "Distance" parcourue par le chat et calculée aléatoirement
     float distanceWalk;

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class HumanController : MonoBehaviour
 {
-    private enum HumanState { Neutral, Pstpst, Catch } // États de l'humain
-    private HumanState currentState = HumanState.Neutral;    // État actuel
-    
+    public enum HumanState { Neutral, Pstpst, Catch } // États de l'humain
+    public HumanState currentState = HumanState.Neutral;    // État actuel
+
 
     public Vector2 humanPosition;
 
@@ -72,6 +72,7 @@ public class HumanController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("HUMAN");
+        // Pour déterminer si on peut attraper ou non le chat
         isTrigger = true;
     }
 }
