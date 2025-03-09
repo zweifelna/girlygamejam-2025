@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d1ab0ea50bf4fae86ef9c425787f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
   humanPosition: {x: 0, y: 0}
   isTrigger: 0
 --- !u!61 &1400360558
@@ -360,6 +361,55 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.8002214, y: 7.05}
   m_EdgeRadius: 0
+--- !u!1 &1626350539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626350541}
+  - component: {fileID: 1626350540}
+  m_Layer: 0
+  m_Name: Time_manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1626350540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626350539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419dc93629f194c998e57aba4ce42dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTime: 15
+  countDown: 0
+  timerLimit: 0
+  timeStop: 0
+  timeOut: 0
+--- !u!4 &1626350541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626350539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0803236, y: 0.69162065, z: 0.0013901424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2064109602
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,9 +442,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae0eaffb4e8d141bfa0d1a1212a4f72d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
   catPosition: {x: 0, y: 0}
   catSpeed: {x: -0.01, y: 0}
   human: {fileID: 1400360557}
+  time: {fileID: 1626350540}
 --- !u!212 &2064109604
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -588,3 +640,4 @@ SceneRoots:
   - {fileID: 2064109605}
   - {fileID: 1400360556}
   - {fileID: 2112603746}
+  - {fileID: 1626350541}
