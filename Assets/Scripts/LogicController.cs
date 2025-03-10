@@ -26,6 +26,8 @@ public class LogicController : MonoBehaviour
         else if (human.isTrigger == true && cat.currentState == CatController.CatState.Interested && human.currentState == HumanController.HumanState.Catch)
         {
             Debug.Log("Dodge");
+            cat.DodgeAndReset();
+            human.isTrigger = false;
         }
     }
 }

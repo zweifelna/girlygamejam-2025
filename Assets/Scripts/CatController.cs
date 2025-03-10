@@ -10,6 +10,7 @@ public class CatController : MonoBehaviour
     public CatState currentState = CatState.Bored;    // État actuel
 
     public Vector2 catPosition;
+    Vector3 startPos;
     public Vector2 catSpeed = new Vector2(-1, 0);
 
     public HumanController human;
@@ -28,6 +29,7 @@ public class CatController : MonoBehaviour
         currentState = CatState.Bored;
         Debug.Log(currentState);
         this.catPosition = this.transform.position;
+        startPos = transform.position;
         StartCoroutine(WaitRandomSeconds());
     }
 
@@ -122,4 +124,50 @@ public class CatController : MonoBehaviour
             //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         }
     }
+
+    public void DodgeAndReset()
+    {
+        StartCoroutine(DodgeCoroutine());
+    }
+
+    private IEnumerator DodgeCoroutine()
+    {
+        Vector3 dodgeTarget = startPos + new Vector3(2f, 2f, 0f); 
+        Vector3 resetPosition = new Vector3(startPos.x, startPos.y, startPos.z); // Position initiale à droite
+
+        float duration = 0.3f; 
+        float resetDuration = 1f; 
+
+        // Monte en diagonale
+        float elapsed = 0;
+        while (elapsed < duration)
+        {
+            transform.position = Vector3.Lerp(startPos, dodgeTarget, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Redescend
+        elapsed = 0;
+        while (elapsed < duration)
+        {
+            transform.position = Vector3.Lerp(dodgeTarget, startPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Retourne à la position initiale
+        elapsed = 0;
+        while (elapsed < resetDuration)
+        {
+            transform.position = Vector3.Lerp(startPos, resetPosition, elapsed / resetDuration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        catPosition = resetPosition;
+    }
+
 }
+
+
