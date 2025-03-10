@@ -101,20 +101,25 @@ public class CatController : MonoBehaviour
 
     IEnumerator WaitRandomSeconds()
     {
-        while(true){
+        while (true)
+        {
             //Print the time of when the function is first called.
             //Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
             //yield on a new YieldInstruction that waits for 5 seconds.
-            yield return new WaitForSeconds(Random.Range(5.0f, 10.0f));
+            yield return new WaitForSeconds(Random.Range(1.0f, 3.0f));
 
-            if(currentState == CatState.Interested)
+            if (currentState == CatState.Interested)
             {
                 //Debug.Log("in interested if");
                 currentState = CatState.Bored;
-            } else if (currentState == CatState.Bored && !human.isTrigger) {
-                if(human.currentState == HumanController.HumanState.Pstpst) currentState = CatState.Interested;
-            } else if (currentState == CatState.Bored && human.isTrigger) {
+            }
+            else if (currentState == CatState.Bored && !human.isTrigger)
+            {
+                if (human.currentState == HumanController.HumanState.Pstpst) currentState = CatState.Interested;
+            }
+            else if (currentState == CatState.Bored && human.isTrigger)
+            {
                 //Debug.Log("in bored if");
                 currentState = CatState.Interested;
             }
@@ -132,11 +137,11 @@ public class CatController : MonoBehaviour
 
     private IEnumerator DodgeCoroutine()
     {
-        Vector3 dodgeTarget = startPos + new Vector3(2f, 2f, 0f); 
+        Vector3 dodgeTarget = startPos + new Vector3(2f, 2f, 0f);
         Vector3 resetPosition = new Vector3(startPos.x, startPos.y, startPos.z); // Position initiale à droite
 
-        float duration = 0.3f; 
-        float resetDuration = 1f; 
+        float duration = 0.3f;
+        float resetDuration = 1f;
 
         // Monte en diagonale
         float elapsed = 0;
