@@ -87,7 +87,7 @@ public class CatController : MonoBehaviour
                     //Debug.Log("Chat reprend de l'intérêt !");
                     //currentState = CatState.Interested;
                     // Calcul la distance pour ce round
-                    //distanceWalk = Random.Range(1.0f, 3.0f);
+                    //distanceWalk = Random.Range(1.0f, 3.0f); 
                     //Debug.Log("Distance à parcourir :" + distanceWalk);
                     //catWalking = 0;
                     //Debug.Log("Chat ennuyé");
@@ -104,7 +104,7 @@ public class CatController : MonoBehaviour
             //Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
             //yield on a new YieldInstruction that waits for 5 seconds.
-            yield return new WaitForSeconds(Random.Range(1.0f, 3.0f));
+            yield return new WaitForSeconds(Random.Range(5.0f, 10.0f));
 
             if(currentState == CatState.Interested)
             {

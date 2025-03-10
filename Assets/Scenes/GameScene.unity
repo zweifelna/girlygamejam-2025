@@ -399,6 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  audioManager: {fileID: 2112603747}
   humanPosition: {x: 0, y: 0}
   isTrigger: 0
 --- !u!61 &1400360558
@@ -781,8 +782,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2112603746}
   - component: {fileID: 2112603745}
+  - component: {fileID: 2112603747}
   m_Layer: 0
-  m_Name: Game_controller
+  m_Name: Game_manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,6 +819,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2112603747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112603744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bb682693090496e837e3c88813d7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Psspss
+    clip: {fileID: 8300000, guid: a82a7e2b6e9b8432a9ed74e7f99c3d88, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

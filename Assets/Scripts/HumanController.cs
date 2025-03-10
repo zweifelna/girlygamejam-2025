@@ -9,10 +9,13 @@ public class HumanController : MonoBehaviour
     public enum HumanState { Neutral, Pstpst, Catch } // États de l'humain
     public HumanState currentState = HumanState.Neutral;    // État actuel
 
+    public AudioManager audioManager;
 
     public Vector2 humanPosition;
 
     public Boolean isTrigger = false;
+
+    private bool isPstpstPlaying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +47,20 @@ public class HumanController : MonoBehaviour
                 break;
 
             case HumanState.Pstpst:
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKey(KeyCode.A)) // Joue le son une seule fois au début
                 {
-                    //Debug.Log("Pstpst");
-                }
-                else if (Input.GetKeyUp(KeyCode.A))
+                    Debug.Log("isPLaying?"+isPstpstPlaying);
+                    if (!isPstpstPlaying)
+                    {
+                        Debug.Log("play psspss");
+                        audioManager.Play("Psspss");
+                        isPstpstPlaying = true;
+                    }
+                } if (Input.GetKeyUp(KeyCode.A)) // Arrête le son lorsqu'on relâche la touche
                 {
+                    audioManager.Stop("Psspss");
+                    isPstpstPlaying = false;
                     currentState = HumanState.Neutral;
-                    //Debug.Log("Go neutre");
                 }
                 break;
 
