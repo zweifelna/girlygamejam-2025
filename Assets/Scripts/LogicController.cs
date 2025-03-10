@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +12,10 @@ public class LogicController : MonoBehaviour
     public CatController cat;
     public AudioManager audioManager;
     public GameObject retryButton;
+
+    public GameObject humanObject;
+    public GameObject catObject;
+    public GameObject winScreen;
 
 
     // Start is called before the first frame update
@@ -27,6 +32,7 @@ public class LogicController : MonoBehaviour
             // On peut attraper le chat
             Debug.Log("HAAAAAAA");
             audioManager.Play("CuteCat");
+            ShowWinScreen();
             ShowRetryButton();
         }
         else if (human.isTrigger == true && cat.currentState == CatController.CatState.Interested && human.currentState == HumanController.HumanState.Catch)
@@ -47,5 +53,18 @@ public class LogicController : MonoBehaviour
     {
         retryButton.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Recharge la scène
+    }
+
+    void ShowWinScreen()
+    {
+        // Désactive le chat et l'humain
+        humanObject.SetActive(false);
+        catObject.SetActive(false);
+
+        // Active l'écran de victoire
+        winScreen.SetActive(true);
+
+        // Affiche le bouton Retry
+        retryButton.SetActive(true);
     }
 }

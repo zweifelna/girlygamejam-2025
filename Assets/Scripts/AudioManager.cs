@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        //Play("screenSound");
+        Play("AmbientSound");
     }
 
     public void Play(string name)
