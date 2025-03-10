@@ -804,6 +804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   human: {fileID: 1400360557}
   cat: {fileID: 2064109603}
+  audioManager: {fileID: 2112603747}
 --- !u!4 &2112603746
 Transform:
   m_ObjectHideFlags: 0
@@ -834,6 +835,18 @@ MonoBehaviour:
   sounds:
   - name: Psspss
     clip: {fileID: 8300000, guid: a82a7e2b6e9b8432a9ed74e7f99c3d88, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: AngryCat
+    clip: {fileID: 8300000, guid: ceeb53971b78142a89187a53e263d0aa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CuteCat
+    clip: {fileID: 8300000, guid: 1348e976b5f0d42f18247eb9177947dc, type: 3}
     volume: 1
     pitch: 1
     loop: 0

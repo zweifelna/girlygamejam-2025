@@ -7,6 +7,7 @@ public class LogicController : MonoBehaviour
 
     public HumanController human;
     public CatController cat;
+    public AudioManager audioManager;
 
 
     // Start is called before the first frame update
@@ -22,11 +23,13 @@ public class LogicController : MonoBehaviour
         {
             // On peut attraper le chat
             Debug.Log("HAAAAAAA");
+            audioManager.Play("CuteCat");
         }
         else if (human.isTrigger == true && cat.currentState == CatController.CatState.Interested && human.currentState == HumanController.HumanState.Catch)
         {
             Debug.Log("Dodge");
             cat.DodgeAndReset();
+            audioManager.Play("AngryCat");
             human.isTrigger = false;
         }
     }
